@@ -1,0 +1,30 @@
+#errorCatcher Echo
+##    $Revision: 229 $
+##    $Author: tkeffer $
+##    $Date: 2010-04-12 17:49:37 -0400 (Mon, 12 Apr 2010) $
+#set $YM="%Y %m"
+#set $D=" %d"
+#set $M=" %b"
+#set $Time=" %H:%M"
+#set $NODAY=" N/A"
+#set $Temp="%6.1f"
+#set $Wind="%6.1f"
+#set $Dir="%6.0f"
+#set $Count="%6d"
+#set $NONE="   N/A"
+#if $unit.unit_type_dict.group_rain == "mm"
+#set $Rain="%6.1f"
+#else
+#set $Rain="%6.2f"
+#end if
+
+#for $day in $month.days
+#if $day.barometer.count.raw
+$day.dateTime.format("%d");$day.outTemp.avg.formatted;$day.outTemp.max.formatted;$day.outTemp.maxtime.formatted;$day.outTemp.min.formatted;$day.outTemp.mintime.formatted;$day.heatdeg.sum.formatted;$day.cooldeg.sum.formatted;$day.rain.sum.formatted;$day.wind.avg.formatted;$day.wind.max.formatted;$day.wind.maxtime.formatted;$day.wind.vecdir.formatted
+#else
+$day.dateTime.format("%d");null;null;null;null;null;null;null;null;null;null;null;null
+#end if
+#end for
+!EOM!
+$month.outTemp.avg.formatted;$month.outTemp.max.formatted;$month.outTemp.maxtime.format("%d");$month.outTemp.min.formatted;$month.outTemp.mintime.format("%d");$month.heatdeg.sum.formatted;$month.cooldeg.sum.formatted;$month.rain.sum.formatted;$month.wind.avg.formatted;$month.wind.max.formatted;$month.wind.maxtime.format("%d");$month.wind.vecdir.formatted
+!EOF!

@@ -1,0 +1,49 @@
+#errorCatcher Echo
+#encoding UTF-8
+$station.location
+$current.dateTime.format("%H:%M %d/%m/%Y")
+$current.outTemp.formatted
+$day.outTemp.max.formatted
+$day.outTemp.maxtime.formatted
+$day.outTemp.min.formatted
+$day.outTemp.mintime.formatted
+#if $current.outTemp.raw < 10.5
+current.windchill.formatted
+#elif $current.outTemp.raw > 26.5
+$current.heatindex
+#else
+$current.outTemp.formatted
+#end if
+$day.heatindex.max.formatted
+$day.heatindex.maxtime
+$day.windchill.min.formatted
+$day.windchill.mintime
+$current.barometer
+$day.barometer.max.formatted
+$day.barometer.maxtime
+$day.barometer.min.formatted
+$day.barometer.mintime
+$current.dewpoint
+$day.dewpoint.max.formatted
+$day.dewpoint.maxtime
+$day.dewpoint.min.formatted
+$day.dewpoint.mintime
+$current.outHumidity
+$day.outHumidity.max.formatted
+$day.outHumidity.maxtime
+$day.outHumidity.min.formatted
+$day.outHumidity.mintime
+$current.windSpeed.formatted
+$current.windDir
+$current.windGust.formatted
+$current.windGustDir
+$day.wind.max.formatted
+$day.wind.maxtime
+$current.rainRate.formatted
+$day.rainRate.max.formatted
+$day.rainRate.maxtime
+$day.rain.sum.formatted
+$week.rain.sum.formatted
+$month.rain.sum.formatted
+$year.rain.sum.formatted
+!!EndOfFile_TorinoMeteo!!
